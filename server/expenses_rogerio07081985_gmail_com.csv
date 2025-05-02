@@ -1,0 +1,16 @@
+date,description,amount,paid_by,split_between
+2025-04-20,Cadeira carro,90,Paulo,Ricardo
+2025-04-21,Walmart Comida,62.32,Paulo,Paulo;Ricardo;Rogerio
+2025-04-22,LightLane Hollywood Studios,61.78,Rogerio,Ricardo;Rogerio
+2025-04-22,Light Lane Magic Kingdom,61.78,Rogerio,Rogerio;Ricardo
+2025-04-22,Photo disney,335.99,Rogerio,Ricardo;Rogerio
+2025-04-23,Trex Restaurant,364.31,Rogerio,Paulo;Ricardo;Rogerio
+2025-04-23,Walmart,413.11,Rogerio,Paulo;Ricardo;Rogerio
+2025-04-25,Parking Animal Kingdom,30,Rogerio,Ricardo;Rogerio
+2025-04-26,Costco Food,240.12,Rogerio,Paulo;Ricardo;Rogerio
+2025-04-26,Costco Pais,86.43,Rogerio,Paulo
+2025-04-26,Costco Ricardo,202.84,Rogerio,Ricardo
+2025-04-26,Comida Costco,18.21,Rogerio,Ricardo
+2025-04-27,Parking Hollywood,30,Rogerio,Ricardo;Rogerio
+2025-04-28,Parking Universal,32,Rogerio,Ricardo;Rogerio
+2025-04-28,Compras Walmart,154.82,Paulo,Paulo;Ricardo;Rogerio
