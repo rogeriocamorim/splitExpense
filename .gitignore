@@ -1,0 +1,33 @@
+# Node dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build outputs
+dist/
+build/
+client/dist/
+server/dist/
+
+# Environment configs
+.env
+client/.env
+server/.env
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+
+# Prisma
+.prisma/
+prisma/dev.db
+prisma/dev.db-journal
+
+# SQLite DB (if located elsewhere)
+server/expenses_*.csv
+
+# VSCode and OS clutter
+.vscode/
+.DS_Store
+Thumbs.db
