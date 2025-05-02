@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./node_modules/@prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  email    String  @id
+  password String
+  expenses Expense[]
+}
+
+model Expense {
+  id           Int      @id @default(autoincrement())
+  date         String
+  description  String
+  amount       Float
+  paid_by      String
+  split_between String  // store as JSON string
+  userEmail    String
+  user         User     @relation(fields: [userEmail], references: [email])
+}
