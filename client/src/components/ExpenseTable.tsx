@@ -32,7 +32,8 @@ export default function ExpenseTable({ expenses }: Props) {
         );
     }
 
-    const displayed = showAll ? expenses : expenses.slice(0, 5);
+    const sorted = [...expenses].sort((a, b) => a.date.localeCompare(b.date));
+    const displayed = showAll ? sorted : sorted.slice(0, 5);
 
     return (
         <Box>

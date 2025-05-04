@@ -6,8 +6,11 @@ import {
     ListItemText,
     Paper,
     Divider,
+    Button,
 } from "@mui/material";
+import { useState } from "react";
 import { Expense } from "../utils/balanceCalculator";
+import PersonReportDialog from "./PersonReportDialog";
 
 interface Props {
     expenses: Expense[];
@@ -26,6 +29,8 @@ interface BreakdownEntry {
 }
 
 export default function BalanceSummary({ expenses }: Props) {
+    const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
+
     const contributions: Contribution[] = [];
 
     for (const exp of expenses) {
@@ -83,7 +88,7 @@ export default function BalanceSummary({ expenses }: Props) {
             const to = isReversed ? entry.a : entry.b;
 
             const breakdown = entry.breakdown.map((line) => {
-                const flip = line.reversed !== isReversed; // flip if contribution direction differs from final row direction
+                const flip = line.reversed !== isReversed;
                 return `${flip ? "+" : "-"}${line.amount.toFixed(2)}`;
             });
 
@@ -122,10 +127,17 @@ export default function BalanceSummary({ expenses }: Props) {
                     {rows.map((row) => (
                         <ListItem key={`${row.from}->${row.to}`} sx={{ px: 0 }}>
                             <ListItemText
-                                primary={`${row.from} owes ${row.to}: ${row.total.toLocaleString("en-US", {
-                                    style: "currency",
-                                    currency: "USD",
-                                })}`}
+                                primary={
+                                    <>
+                                        {`${row.from} owes ${row.to}: ${row.total.toLocaleString("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                        })}`}
+                                        <Button size="small" sx={{ ml: 2 }} onClick={() => setSelectedPerson(row.from)}>
+                                            View Report
+                                        </Button>
+                                    </>
+                                }
                                 secondary={`Breakdown: ${row.breakdown.join(" ")}`}
                                 slotProps={{
                                     primary: { sx: { fontWeight: "medium" } },
@@ -136,6 +148,14 @@ export default function BalanceSummary({ expenses }: Props) {
                     ))}
                 </List>
             </Paper>
+
+            {selectedPerson && (
+                <PersonReportDialog
+                    person={selectedPerson}
+                    expenses={expenses}
+                    onClose={() => setSelectedPerson(null)}
+                />
+            )}
         </Box>
     );
 }
